@@ -9,7 +9,7 @@
     <title>Document</title>
     <style>
         body{
-            background-color: #D8CEF6;
+            background-color:#1c2841;
         }
         .left,.right{
             height: 100vh;
@@ -68,7 +68,6 @@
         <div class="col-md-6 g-0">
             <div class="right">
                 <div class="search-box">
-                    <form>
                         <div class="form-group">
                             <div class="input-group mb-3">
                                 <span class="input-group-text bg-primary text-white" style="border: none;"><i class="fa fa-search"></i></span>
@@ -76,10 +75,9 @@
                                 <button class="btn btn-sm btn-primary fw-bold fs-5">search</button>
                             </div>
                         </div>
-                    </form>
                 </div>
                 <div class="table-responsive view-data">
-                    <table class="table table-danger table-striped table-bordered">
+                    <table class="table table-success table-striped table-bordered">
                         <thead>
                             <tr>
                                 <td>Name</td>
@@ -99,7 +97,7 @@
                                 <td>IT</td>
                                 <td>WD</td>
                                 <td>15-10-2021</td>
-                                <td><button class="btn btn-success">Add Marks</button></td>
+                                <td id="show"><button id="add-mark" class="btn btn-success">Add Marks</button></td>
                             </tr>
                         </tbody>
                       </table>
@@ -109,12 +107,13 @@
             </div>
         </div>
     </div>
-
+    
     <!-- script -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/blazeface"></script>
     <script>
         let video = document.getElementById('video');
+        let add_mark = document.getElementById('add-mark');
         let model;
         const setupCamera = () => {
             navigator.mediaDevices.getUserMedia({
@@ -135,7 +134,21 @@
         model = await blazeface.load();
         setInterval(faceDetection,100);
         });
+
+        add_mark.addEventListener('click',function(){
+           
+            this.remove();
+            document.getElementById('show').innerHTML = `<div class="justify-content-center align-items-center">
+        <div>
+            <input type='text' placeholder='Enter marks' style='width:100px'>
+        </div>
+        <div class="text-center mt-2">
+            <button class='btn btn-sm btn-danger'>Add</button>
+        </div>
+    </div>`;
+        });
     </script>
+
 </body>
 </html>
 
