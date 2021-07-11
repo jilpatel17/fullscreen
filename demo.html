@@ -5,120 +5,228 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://code.responsivevoice.org/responsivevoice.js"></script>
     <title>Document</title>
     <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
         body{
-            background-color:#1c2841;
+            background-color: rgb(226, 213, 230);;
         }
-        .left,.right{
-            height: 100vh;
-            width: 100%;
-        }
-        
-        .left #video{
-            width: 100%;
-            height: 100%;
-
-        }
-        .right{
-            position: relative;
-            color: white;
-        }
-        .search-box{
-            width: 50%;
-            margin: 0px auto;
-            position: absolute;
-            top: 20%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-        }
-        .view-data{
-            width: 90%;
-            margin: 0px auto;
-            position: absolute;
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-        }
-        @media (max-width:700px){
-            .left,.right{
-                height: 50vh;
-            }
-            .search-box{
-                width: 95%;
-                margin: 0px auto;
-                top: 20%;
-            }
-            .view-data{
-                width: 95%;
-                margin: 0px auto;
-                top: 60%
-            }
+        .question div{
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div class="row g-0">
-        <div class="col-md-6 g-0">
-            <div class="left">
-                <video id="video" autoplay></video>
+    <div class="main">
+        <div class="container mt-5 p-3 text-white" style="background-color: rgb(102, 42, 143);;">
+            <div class="row">
+                <div class="col-md-10 col-8">
+                    <h2>Cyber Security</h2>
+                </div>
+                <div class="col-md-2 col-4">
+                    <button type="button" class="btn btn-primary">
+                        Timer : <span class="badge text-dark" style="background-color: white;"><span id="hour"></span> : <span id="minute"></span> : <span id="second"></span></span>
+                      </button>
+                </div>
             </div>
         </div>
-        <div class="col-md-6 g-0">
-            <div class="right">
-                <div class="search-box">
-                        <div class="form-group">
-                            <div class="input-group mb-3">
-                                <span class="input-group-text bg-primary text-white" style="border: none;"><i class="fa fa-search"></i></span>
-                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Enter Enrollment No.">
-                                <button class="btn btn-sm btn-primary fw-bold fs-5">search</button>
-                            </div>
+        <div id="clear" class="container py-5 px-3" style="background-color: rgb(209, 168, 233);">
+            <div class="row">
+                <div class="col-md-8 col-12">
+                    <div class="question">
+                        <div id="1" style="display: inherit;">
+                            <h3>1) What is full form of HTML. </h3><br>
+                            <input type="radio" name="1">&nbsp;&nbsp; <label for="">Hyper text tranport protocaol</label><br><br>
+                            <input type="radio" name="1">&nbsp;&nbsp; <label for="">HTTp</label><br><br>
+                            <input type="radio" name="1">&nbsp;&nbsp; <label for="">nothing</label><br><br>
+                            <input type="radio" name="1">&nbsp;&nbsp; <label for="">all of above</label><br><br>
                         </div>
+                        <div id="2">
+                            <h3>2) What is full form of js. </h3><br>
+                            <input type="radio" name="2">&nbsp;&nbsp; <label for="">Hyper text tranport protocaol</label><br><br>
+                            <input type="radio" name="2">&nbsp;&nbsp; <label for="">javascript</label><br><br>
+                            <input type="radio" name="2">&nbsp;&nbsp; <label for="">nothing</label><br><br>
+                            <input type="radio" name="2">&nbsp;&nbsp; <label for="">all of above</label><br><br>
+                        </div>
+                        <div id="3">
+                            <h3>3) What is full form of php. </h3><br>
+                            <input type="radio" name="5">&nbsp;&nbsp; <label for="">Hyper text tranport protocaol</label><br><br>
+                            <input type="radio" name="5">&nbsp;&nbsp; <label for="">HTTp</label><br><br>
+                            <input type="radio" name="5">&nbsp;&nbsp; <label for="">hypertext preprosser</label><br><br>
+                            <input type="radio" name="5">&nbsp;&nbsp; <label for="">all of above</label><br><br>
+                        </div>
+                        <div id="4">
+                            <h3>4) What is full form of WHO. </h3><br>
+                            <input type="radio" name="3">&nbsp;&nbsp; <label for="">Hyper text tranport protocaol</label><br><br>
+                            <input type="radio" name="3">&nbsp;&nbsp; <label for="">HTTp</label><br><br>
+                            <input type="radio" name="3">&nbsp;&nbsp; <label for="">nothing</label><br><br>
+                            <input type="radio" name="3">&nbsp;&nbsp; <label for="">world health organization</label><br><br>
+                        </div>
+                    </div>
+                    <div class="footer d-flex">
+                        <div>
+                            <button id="previous" class="btn btn-primary mx-2" onclick="pre()">Previous</button>
+                        </div>
+                        <div>
+                            <button id="next" class="btn btn-danger mx-2" onclick="next()">Next</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="table-responsive view-data">
-                    <table class="table table-success table-striped table-bordered">
-                        <thead>
-                            <tr>
-                                <td>Name</td>
-                                <td>Eroll No</td>
-                                <td>Semester</td>
-                                <td>Branch</td>
-                                <td>Subject</td>
-                                <td>Date</td>
-                                <td>Action</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Jil</td>
-                                <td>19********47</td>
-                                <td>5 sem</td>
-                                <td>IT</td>
-                                <td>WD</td>
-                                <td>15-10-2021</td>
-                                <td id="show"><button id="add-mark" class="btn btn-success">Add Marks</button></td>
-                            </tr>
-                        </tbody>
-                      </table>
-                      
+                <div class="col-md-4 col-12 col-mt-3 d-flex justify-content-center align-items-center">
+                    <div class="personal-info">
+                        <div class="card mb-3" style="max-width: 100%;background-color: rgb(207, 158, 240);">
+                            <video id="video" autoplay></video>
+                        </div>
+                        <div class="card mb-3" style="max-width: 100%;background-color: rgb(164, 120, 194);">
+                            <div class="row g-0">
+                              <div class="col-md-4">
+                                <img src="student.jpg" class="img-fluid rounded-start" alt="...">
+                              </div>
+                              <div class="col-md-8">
+                                <div class="card-body">
+                                  <h5 class="card-title">Student Details</h5>
+                                  <p class="card-text">Name : <span>Jil N. Patel</span></p>
+                                  <p class="card-text">SID No. : <span>19********47</span></p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
                 </div>
-                
+            </div>
+        </div>
+        <div class="container" id="msg" style="display: none;">
+            <div class="message">
+                <div class="alert alert-primary">
+                    Result will be publised Soon ! Have a good day .
+                </div>
             </div>
         </div>
     </div>
-    
-    <!-- script -->
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/blazeface"></script>
-    <script>
-        let video = document.getElementById('video');
-        let add_mark = document.getElementById('add-mark');
+    <script type="text/javascript">
+    responsiveVoice.speak("hello my name is jil patel");
+        var a=1;
+        if(a==1)
+        {
+            
+            document.getElementById('previous').style.display = "none";
+        }
+        
+        function next(){
+            if(a!=4)
+            {
+            document.getElementById(a).style.display="none";
+            a++;
+            document.getElementById(a).style.display="inherit";
+            
+            document.getElementById('previous').style.display = "block";
+            }
+            if(a==4)
+            {
+                document.getElementById('next').innerText = "Submit";
+            }
+        }
+        function pre(){
+            if(a!=1)
+            {
+            document.getElementById(a).style.display="none";
+            a--;
+            document.getElementById(a).style.display="inherit";
+            document.getElementById('next').innerText = "Next";
+            } 
+            if(a==1)
+            {
+                document.getElementById('previous').style.display = "none";
+            }
+        }
+        var h = document.getElementById('hour');
+        var m = document.getElementById('minute');
+        var s = document.getElementById('second');
+        var hour = "00";
+        var min = '01';
+        var sec = "00";
+        
+       var timer = setInterval(function(){
+       
+
+        if(sec==0)
+        {
+            if(min=="01"){
+                min = "00";
+                sec = 60;
+                
+            }
+            else if(min=="00")
+            {
+                min="00";
+                if(hour=="00")
+                {
+                    min="00";
+                }
+                else
+                {
+                    hour--;
+                    if(hour <=9)
+                    {
+                        hour = '0'+hour;
+                    }
+                    min="59";
+                    sec=60;
+                }
+            }
+            else{
+                min--;
+                if(min <=9)
+                {
+                    min= '0'+min;
+                }
+                sec = 60;
+            }
+        }
+        else
+        {
+            sec--;
+            if(sec <="9")
+            {
+                sec = '0'+sec;
+            }
+        }
+      
+        if(hour==0 && min==0 && sec<=40 && sec>=0)
+        {
+            h.style.color = "red";
+            m.style.color = "red";
+            s.style.color = "red";
+            
+
+        }
+        if(hour==0 && min==0 && sec==0)
+        {
+            swal("Timeout","If you not submit then OK ,It automatically submited!","error");
+            document.getElementById('clear').style.display = 'none';
+            document.getElementById('msg').style.display = 'block';
+            document.getElementById('video').pause();
+            clearInterval(timer);
+        }
+        
+        h.innerHTML = hour;
+        m.innerHTML = min;
+        s.innerHTML = sec;
+       },1000);
+
+
+       let video = document.getElementById('video');
         let model;
         const setupCamera = () => {
             navigator.mediaDevices.getUserMedia({
-                video:true,
-                audio:true,
+                video:{width:100,height:50},
+                audio:false
             }).then(stream=>{
                 video.srcObject = stream;
             });
@@ -134,21 +242,8 @@
         model = await blazeface.load();
         setInterval(faceDetection,100);
         });
-
-        add_mark.addEventListener('click',function(){
-           
-            this.remove();
-            document.getElementById('show').innerHTML = `<div class="justify-content-center align-items-center">
-        <div>
-            <input type='text' placeholder='Enter marks' style='width:100px'>
-        </div>
-        <div class="text-center mt-2">
-            <button class='btn btn-sm btn-danger'>Add</button>
-        </div>
-    </div>`;
-        });
-    </script>
-
+            
+        </script>
 </body>
 </html>
 
