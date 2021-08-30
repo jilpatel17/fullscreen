@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conn = mysqli_connect("localhost","root","","student") or die("not connected");
+$conn = mysqli_connect("remotemysql.com","oEBLrW5Q8N","AOWaq9ylmk","oEBLrW5Q8N") or die("not connected");
 $name1= $_SESSION['name'];
 
 $sql = "select * from data where name='$name1'";
