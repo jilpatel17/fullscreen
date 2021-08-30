@@ -99,7 +99,7 @@ while($row = mysqli_fetch_assoc($run))
                 getUserMedia({video: true, audio: true}, (stream)=>{
                     local_stream = stream;
                     setLocalStream(local_stream)
-                    notify("Joining peer")
+                   
                     let call = peer.call(room_id, stream)
                     call.on('stream', (stream)=>{
                         setRemoteStream(stream);
@@ -123,14 +123,7 @@ while($row = mysqli_fetch_assoc($run))
                         video.srcObject = stream;
                         video.play();
                     }
-                    function notify(msg){
-                    let notification = document.getElementById("notification")
-                    notification.innerHTML = msg
-                    notification.hidden = false
-                    setTimeout(()=>{
-                        notification.hidden = true;
-                    }, 3000);
-                    }
+                    
         });
 
         $(document).on("click",".call",function(){
@@ -154,7 +147,7 @@ while($row = mysqli_fetch_assoc($run))
                         },(err)=>{
                             console.log(err)
                         })
-                        notify("Waiting for peer to join.");
+                        
                     })
                     peer.on('call',(call)=>{
                         call.answer(local_stream);
@@ -176,14 +169,7 @@ while($row = mysqli_fetch_assoc($run))
                         video.srcObject = stream;
                         video.play();
                     }
-                    function notify(msg){
-                    let notification = document.getElementById("notification")
-                    notification.innerHTML = msg
-                    notification.hidden = false
-                    setTimeout(()=>{
-                        notification.hidden = true;
-                    }, 3000);
-                    }
+                    
                 }
             });
         });
