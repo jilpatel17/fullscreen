@@ -35,7 +35,7 @@ session_start();
 </div>
 <?php
 
-$conn = mysqli_connect("localhost","root","","student") or die("not connected");
+$conn = mysqli_connect("remotemysql.com","oEBLrW5Q8N","AOWaq9ylmk","oEBLrW5Q8N") or die("not connected");
 
 $sql = "select * from data";
 $run = mysqli_query($conn,$sql);
